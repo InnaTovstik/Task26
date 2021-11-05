@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 public class MyServlet extends HttpServlet {
 
@@ -25,10 +26,14 @@ public class MyServlet extends HttpServlet {
 
         String method = request.getMethod();
         if (method == "GET") {
-            String author = request.getParameter("author");
-            String book = request.getParameter("book");
-            response.getWriter().println("author:" + author + " book:" + book);
-            countGet = ClickOutput.returnCountClick(countGet);
+            Map<String, String[]> map = request.getParameterMap();
+            for (Map.Entry<String, String[]> item : map.entrySet()) {
+                String[] mapValues = item.getValue();
+                for (String mapValue : mapValues) {
+                    response.getWriter().println("Key: " + item.getKey() + "Value: " + mapValue);
+                }
+            }
+         countGet = ClickOutput.returnCountClick(countGet);
         } else if (method == "POST") {
             response.getWriter().println("from POST");
             countPost = ClickOutput.returnCountClick(countPost);
