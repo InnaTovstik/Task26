@@ -5,12 +5,12 @@
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
     <servlet>
-        <servlet-name>My first servlet</servlet-name>
+        <servlet-name>MyServlet</servlet-name>
         <servlet-class>org.example.MyServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>My first servlet</servlet-name>
+        <servlet-name>MyServlet</servlet-name>
         <url-pattern>/info</url-pattern>
     </servlet-mapping>
 
